@@ -22,16 +22,16 @@ func main() {
 	
 	tcpListener, err := net.ListenTCP("tcp", localAddress)      
 	CheckError(err)
-/*
+
 	if err != nil {
 		fmt.Println("error：", err)
-		return
+		continue
 	}
-*/
+/*
 	defer func() { //
 		tcpListener.Close()
 	}()
-	
+*/	
 	fmt.Println("tcpaddr wait...")
 	for {
 		var conn, err2 = tcpListener.AcceptTCP() 
@@ -46,13 +46,14 @@ func main() {
 	
 	}
 }
+/*
 func CheckError(err error) {  
     if err != nil {  
         fmt.Fprintf(os.Stderr, "Fatal error: %s", err.Error())  
         os.Exit(1)  
     }
 }	
-
+*/
 func handleClient(conn net.Conn) {
     defer conn.Close()
     for{
